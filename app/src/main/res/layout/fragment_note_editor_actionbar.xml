@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) ASO 2020.
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/note_fragment_editor_actionbar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorSurface"
+    app:behavior_hideable="true"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/colorDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/action_undo"
+        style="@style/EditorActionBarButton"
+        android:src="@drawable/ic_note_undo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/toolbar_buttons"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/toolbar_buttons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/action_redo"
+        app:layout_constraintStart_toEndOf="@id/action_undo"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/heading"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_bar_title" />
+
+            <ImageButton
+                android:id="@+id/bold"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_bar_bold" />
+
+            <ImageButton
+                android:id="@+id/italic"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_bar_italic" />
+
+            <ImageButton
+                android:id="@+id/strike_through"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_strike_through" />
+
+            <ImageButton
+                android:id="@+id/underline"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_underline" />
+
+            <ImageButton
+                android:id="@+id/color"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_bar_color" />
+
+            <ImageButton
+                android:id="@+id/quote"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_bar_quote" />
+
+            <ImageButton
+                android:id="@+id/list_number"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_bar_list_numbers" />
+
+            <ImageButton
+                android:id="@+id/indent"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_bar_indent" />
+
+            <ImageButton
+                android:id="@+id/outdent"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_bar_outdent" />
+
+            <ImageButton
+                android:id="@+id/list_bullet"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_bar_list_bullet" />
+
+            <ImageButton
+                android:id="@+id/link"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_bar_link" />
+
+            <ImageButton
+                android:id="@+id/image"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_bar_image" />
+
+            <ImageButton
+                android:id="@+id/align_center"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_align_center" />
+
+            <ImageButton
+                android:id="@+id/align_justify"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_align_justify" />
+
+            <ImageButton
+                android:id="@+id/align_right"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_align_right" />
+
+            <ImageButton
+                android:id="@+id/align_left"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_align_left" />
+
+            <ImageButton
+                android:id="@+id/code"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/ic_note_action_bar_code" />
+
+            <ImageButton
+                android:id="@+id/erase"
+                style="@style/EditorActionBarButton"
+                android:src="@drawable/icon_erase" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <ImageButton
+        android:id="@+id/action_redo"
+        style="@style/EditorActionBarButton"
+        android:src="@drawable/ic_note_redo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/toolbar_buttons"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

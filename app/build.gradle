@@ -1,8 +1,14 @@
+/*
+ * Copyright (c) ASO 2020.
+ */
+
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.aso.senote"
         minSdkVersion 21
@@ -30,36 +36,57 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+
+    //Testing---------------------------------------------------------------------------------------
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    //Navigation component
+    //Navigation component--------------------------------------------------------------------------
     def nav_version = "2.3.0-alpha02"
 
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
-    //Data persistence
+    //Data persistence------------------------------------------------------------------------------
     def room_version = "2.2.4"
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
-    // For Kotlin use kapt instead of annotationProcessor
 
-    //Work Manager
+    //Work Manager----------------------------------------------------------------------------------
     def work_version = "2.3.2"
 
     implementation "androidx.work:work-runtime:$work_version"
 
-    //LifeCycle components
+    //LifeCycle components--------------------------------------------------------------------------
     def lifecycle_version = "2.2.0"
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
-    // Annotation processor
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 
+    //TextEditor------------------------------------------------------------------------------------
+    implementation 'com.github.irshulx:laser-native-editor:3.0.4'
+    final def markwon_version = '4.2.2'
+    implementation "io.noties.markwon:core:$markwon_version"
+    implementation "io.noties.markwon:editor:$markwon_version"
+    implementation "io.noties.markwon:ext-strikethrough:$markwon_version"
+    implementation "io.noties.markwon:ext-tables:$markwon_version"
+    implementation "io.noties.markwon:html:$markwon_version"
+    implementation "io.noties.markwon:image:$markwon_version"
+    implementation "io.noties.markwon:image-glide:$markwon_version"
 
+    //ColorPicker
+    implementation 'com.github.duanhong169:colorpicker:1.1.6'
+
+    //Kotlin configuration
+    implementation "androidx.core:core-ktx:1.2.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+
+}
+repositories {
+    mavenCentral()
 }

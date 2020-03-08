@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) ASO 2020.
+ */
+
 package com.aso.senote.ui.fragments;
 
 
@@ -6,7 +10,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,13 +18,11 @@ import androidx.fragment.app.Fragment;
 
 import com.aso.senote.R;
 import com.aso.senote.databinding.FragmentHomeBinding;
-import com.aso.senote.util.PhotoAttachmentHandler;
 
 public class HomeFragment extends Fragment {
 
 
     private FragmentHomeBinding binding;
-    private PhotoAttachmentHandler mPhotoAttachmentHandler;
     private View mView;
     private Context mContext;
 
@@ -54,15 +55,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void init() {
-        EditText editor = binding.testET;
 
-        mPhotoAttachmentHandler = new PhotoAttachmentHandler(editor);
-        binding.testFAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mPhotoAttachmentHandler.insert(" :-) ", R.drawable.test);
-            }
-        });
     }
 
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) ASO 2020.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:tint="#000000"
+    android:viewportWidth="251.7539"
+    android:viewportHeight="251.7539">
+    <group
+        android:translateX="20.876955"
+        android:translateY="11.443359">
+        <group android:translateY="165.44531">
+            <path
+                android:fillAlpha="0.8"
+                android:fillColor="#000000"
+                android:pathData="M7.875,-45.078125L7.875,-56.890625L76.15625,-85.71875L76.125,-73.203125L22.015625,-50.96875L76.171875,-28.53125L76.15625,-15.890625L7.875,-45.078125Z" />
+            <path
+                android:fillAlpha="0.8"
+                android:fillColor="#000000"
+                android:pathData="M78.296875,1L119.453125,-103L132.375,-103L91.203125,1L78.296875,1Z" />
+            <path
+                android:fillAlpha="0.8"
+                android:fillColor="#000000"
+                android:pathData="M202.14062,-45.125L133.85938,-15.9375L133.875,-28.484375L187.95312,-50.90625L133.875,-73.125L133.84375,-85.65625L202.125,-56.828125L202.14062,-45.125Z" />
+        </group>
+    </group>
+</vector>
