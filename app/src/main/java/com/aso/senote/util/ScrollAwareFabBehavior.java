@@ -37,10 +37,17 @@ public class ScrollAwareFabBehavior extends FloatingActionButton.Behavior {
                                int type, @NonNull int[] consumed) {
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed,
                 dyUnconsumed, type, consumed);
-        if (dyConsumed > 0 && child.isShown()) {
-            child.hide();
+        if (dyConsumed > 0 && child.getVisibility() == View.VISIBLE) {
+            child.hide(new FloatingActionButton.OnVisibilityChangedListener() {
 
-        } else if (dyConsumed < 0 && !child.isShown()) {
+                @Override
+                public void onHidden(FloatingActionButton fab) {
+                    super.onHidden(fab);
+                    fab.setVisibility(View.INVISIBLE);
+                }
+            });
+
+        } else if (dyConsumed < 0 && child.getVisibility() != View.VISIBLE) {
             child.show();
         }
     }

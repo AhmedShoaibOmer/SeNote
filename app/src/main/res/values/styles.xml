@@ -67,6 +67,7 @@
     </style>
 
     <style name="EditorActionBarButton">
+        <item name="contentDescription" />
         <item name="android:layout_width">36dp</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:contentDescription">@null</item>

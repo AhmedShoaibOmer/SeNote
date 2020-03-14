@@ -6,16 +6,13 @@ package com.aso.senote.editor;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.text.InputType;
 import android.text.Spanned;
 import android.view.Gravity;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.SeekBar;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.widget.NestedScrollView;
@@ -111,28 +108,32 @@ public class SEditor implements View.OnClickListener {
         markwon.setParsedMarkdown(textInputET, markdown);
 
         //Preview mode
+        textInputET.setClickable(false);
+        textInputET.setLongClickable(false);
         textInputET.setFocusableInTouchMode(false);
         textInputET.setFocusable(false);
+        noteTitleET.setClickable(false);
+        noteTitleET.setLongClickable(false);
         noteTitleET.setFocusableInTouchMode(false);
         noteTitleET.setFocusable(false);
-        textInputET.setInputType(InputType.TYPE_NULL);
-        noteTitleET.setInputType(InputType.TYPE_NULL);
     }
 
-    public void startEditMode() {
+    private void startEditMode() {
         isInEditMode = true;
         toggleShowBottomToolbar();
         if (isPreferencesVisible) toggleShowPreferences();
         toggleTopToolbarNavigationIcon();
 
         //Edit Mode
+        textInputET.setClickable(true);
+        textInputET.setLongClickable(true);
         textInputET.setFocusableInTouchMode(true);
         textInputET.setFocusable(true);
+        noteTitleET.setClickable(true);
+        noteTitleET.setLongClickable(true);
         noteTitleET.setFocusableInTouchMode(true);
         noteTitleET.setFocusable(true);
         textInputET.requestFocus();
-        textInputET.setInputType(InputType.TYPE_TEXT_VARIATION_LONG_MESSAGE | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-        noteTitleET.setInputType(InputType.TYPE_CLASS_TEXT);
     }
 
     public boolean handleOnBackPressed() {
@@ -211,55 +212,46 @@ public class SEditor implements View.OnClickListener {
     }
 
     private void initKeyboardListener() {
-        KeyboardUtils.addKeyboardToggleListener(mView, mContext, new KeyboardUtils.SoftKeyboardToggleListener() {
-            @Override
-            public void onToggleSoftKeyboard(boolean isVisible) {
-                if (isVisible) {
-                    if (!isActionbarBottomSheetVisible) toggleShowEditorActionbarBottomSheet();
-                    isKeyboardVisible = true;
-                } else {
-                    if (isActionbarBottomSheetVisible) toggleShowEditorActionbarBottomSheet();
-                    isKeyboardVisible = false;
-                }
+        KeyboardUtils.addKeyboardToggleListener(mView, mContext, isVisible -> {
+            if (isVisible) {
+                if (!isActionbarBottomSheetVisible) toggleShowEditorActionbarBottomSheet();
+                isKeyboardVisible = true;
+            } else {
+                if (isActionbarBottomSheetVisible) toggleShowEditorActionbarBottomSheet();
+                isKeyboardVisible = false;
             }
         });
 
     }
 
     private void initToolbar() {
-        actionBarToolBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isInEditMode) {
-
-                } else {
-
-                }
+        actionBarToolBar.setNavigationOnClickListener(v -> {
+            if (isInEditMode) {
+                // TODO: 3/14/20 close the edit mode and ask to save
+            } else {
+                // TODO: 3/14/20 back to the notebook fragment
             }
         });
         actionBarToolBar.inflateMenu(R.menu.note_fragment_menu);
         final Menu menu = actionBarToolBar.getMenu();
-        actionBarToolBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.action_edit:
-                        // TODO: 3/7/20 Animate icons toggle
-                        menu.findItem(R.id.action_save).setVisible(true);
-                        menu.findItem(R.id.action_edit).setVisible(false);
-                        startEditMode();
+        actionBarToolBar.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.action_edit:
+                    // TODO: 3/7/20 Animate icons toggle
+                    menu.findItem(R.id.action_save).setVisible(true);
+                    menu.findItem(R.id.action_edit).setVisible(false);
+                    startEditMode();
 
-                        return true;
-                    case R.id.action_save:
+                    return true;
+                case R.id.action_save:
 
-                        menu.findItem(R.id.action_save).setVisible(false);
-                        menu.findItem(R.id.action_edit).setVisible(true);
-                        startPreviewMode();
+                    menu.findItem(R.id.action_save).setVisible(false);
+                    menu.findItem(R.id.action_edit).setVisible(true);
+                    startPreviewMode();
 
-                        return true;
-                    default:
-                        return false;
-                }
+                    return true;
+                default:
+                    return false;
             }
         });
     }
@@ -267,27 +259,21 @@ public class SEditor implements View.OnClickListener {
     private void initBottomToolbar() {
 
 
-        bottomToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO: 3/7/20 Implement Change Paper Dialog
-            }
+        bottomToolbar.setNavigationOnClickListener(v -> {
+            // TODO: 3/7/20 Implement Change Paper Dialog
         });
 
         bottomToolbar.inflateMenu(R.menu.note_fragment_bottom_menu);
         Menu menu = bottomToolbar.getMenu();
-        bottomToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.action_more_note_fragment:
-                        return true;
-                    case R.id.action_preferences:
-                        toggleShowPreferences();
-                        return true;
-                    default:
-                        return false;
-                }
+        bottomToolbar.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.action_more_note_fragment:
+                    return true;
+                case R.id.action_preferences:
+                    toggleShowPreferences();
+                    return true;
+                default:
+                    return false;
             }
         });
 
@@ -418,11 +404,8 @@ public class SEditor implements View.OnClickListener {
         mView.findViewById(R.id.action_undo).setOnClickListener(this);
         mView.findViewById(R.id.action_redo).setOnClickListener(this);
 
-        copyFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Implenent copy to clipboard method
-            }
+        copyFab.setOnClickListener(v -> {
+            //Implement copy to clipboard method
         });
     }
 
