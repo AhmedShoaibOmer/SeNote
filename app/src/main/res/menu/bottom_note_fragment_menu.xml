@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) ASO 2020.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_change_paper"
+        android:icon="@drawable/ic_notefragment_change_paper_24dp"
+        android:orderInCategory="2"
+        android:title="@string/change_paper"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_share_note_fragment"
+        android:icon="@drawable/ic_action_share"
+        android:orderInCategory="1"
+        android:title="@string/share"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_add_star"
+        android:icon="@drawable/ic_action_add_star_24dp"
+        android:orderInCategory="3"
+        android:title="@string/add_star"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_remove_star"
+        android:icon="@drawable/ic_star_black_24dp"
+        android:orderInCategory="3"
+        android:title="@string/remove_star"
+        android:visible="false"
+        app:showAsAction="always" />
+
+
+</menu>

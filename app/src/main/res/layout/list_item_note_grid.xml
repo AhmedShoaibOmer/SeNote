@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) ASO 2020.
+  -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.aso.senote.ui.fragments.notebook.NotebookViewModel" />
+
+        <variable
+            name="note"
+            type="com.aso.senote.data.models.Note" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="@{() -> viewModel.openNote(note.id)}"
+        bind:cardBackgroundColor="@color/colorSurface"
+        bind:cardElevation="2dp"
+        bind:strokeWidth="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/note_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:gravity="start"
+                android:maxLines="2"
+                android:text="@{note.noteTitle}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                tools:text="First Note" />
+
+            <TextView
+                android:id="@+id/note_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:maxLines="6"
+                android:text="@{note.noteContent}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                tools:text="blah blah blah blah blah blah blah " />
+
+            <TextView
+                android:id="@+id/last_modified"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:gravity="end"
+                android:singleLine="true"
+                bind:showLastModified="@{note.lastModified}"
+                tools:text="25/7/2020" />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

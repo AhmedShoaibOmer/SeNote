@@ -1,0 +1,19 @@
+<!--
+  ~ Copyright (c) ASO 2020.
+  -->
+
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        app:fragment="com.aso.senote.ui.activities.SettingsActivity$MessagesFragment"
+        app:icon="@drawable/messages"
+        app:key="messages_header"
+        app:title="@string/messages_header" />
+
+    <Preference
+        app:fragment="com.aso.senote.ui.activities.SettingsActivity$SyncFragment"
+        app:icon="@drawable/sync"
+        app:key="sync_header"
+        app:title="@string/sync_header" />
+
+</PreferenceScreen>

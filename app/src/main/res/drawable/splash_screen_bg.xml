@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) ASO 2020.
+  -->
+
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:opacity="opaque">
     <item>
         <color android:color="@color/colorPrimary" />
+
     </item>
     <!--<item>
         <bitmap android:src="@drawable/test"

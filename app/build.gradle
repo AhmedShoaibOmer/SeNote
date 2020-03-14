@@ -5,6 +5,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs"
+apply plugin: 'kotlin-kapt'
+
 
 android {
     compileSdkVersion 29
@@ -16,6 +19,13 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions{
+            annotationProcessorOptions {
+                arguments = [
+                        "room.incremental":"true"
+                ]
+            }
+        }
     }
     buildTypes {
         release {
@@ -26,6 +36,18 @@ android {
     dataBinding {
         enabled = true
     }
+    viewBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
 }
 
 dependencies {
@@ -37,38 +59,51 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
+    //Kotlin
+    implementation "androidx.fragment:fragment-ktx:1.2.4"
+
     //Testing---------------------------------------------------------------------------------------
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.preference:preference:1.1.0'
+    kaptTest 'junit:junit:4.12'
+    kaptAndroidTest 'androidx.test.ext:junit:1.1.1'
+    kaptAndroidTest 'androidx.test.espresso:espresso-core:3.2.0'
 
     //Navigation component--------------------------------------------------------------------------
-    def nav_version = "2.3.0-alpha02"
 
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     //Data persistence------------------------------------------------------------------------------
-    def room_version = "2.2.4"
+    def room_version = "2.2.5"
 
     implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     //Work Manager----------------------------------------------------------------------------------
-    def work_version = "2.3.2"
+    def work_version = "2.3.4"
 
     implementation "androidx.work:work-runtime:$work_version"
+    implementation "androidx.work:work-runtime-ktx:$work_version"
 
     //LifeCycle components--------------------------------------------------------------------------
     def lifecycle_version = "2.2.0"
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
-    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
     //TextEditor------------------------------------------------------------------------------------
-    implementation 'com.github.irshulx:laser-native-editor:3.0.4'
+    //implementation 'com.github.irshulx:laser-native-editor:3.0.4'
     final def markwon_version = '4.2.2'
     implementation "io.noties.markwon:core:$markwon_version"
     implementation "io.noties.markwon:editor:$markwon_version"
@@ -84,6 +119,10 @@ dependencies {
     //Kotlin configuration
     implementation "androidx.core:core-ktx:1.2.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //Color Palette
+    implementation 'androidx.palette:palette:1.0.0'
+    implementation 'androidx.palette:palette-ktx:1.0.0'
 
 
 }

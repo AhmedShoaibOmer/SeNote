@@ -8,7 +8,7 @@
     package="com.aso.senote">
 
     <application
-        android:name=".App"
+        android:name=".BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/ThemeOverlay.SeNote"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".ui.activities.SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
         <activity
             android:name=".ui.activities.SplashActivity"
             android:theme="@style/ThemeOverlay.SeNote.SplashTheme">

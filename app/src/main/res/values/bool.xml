@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) ASO 2020.
+  -->
+
+<resources>
+    <bool name="lightStatusBarColor">true</bool>
+</resources>

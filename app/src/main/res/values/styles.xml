@@ -2,7 +2,7 @@
   ~ Copyright (c) ASO 2020.
   -->
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="ThemeOverlay.SeNote" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -30,13 +30,16 @@
 
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="colorOnBackground">@color/colorOnBackground</item>
-
+        <item name="android:statusBarColor">@color/colorSurface</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">@bool/lightStatusBarColor
+        </item>
 
         <item name="materialCardViewStyle">
             @style/MaterialCardView
         </item>
 
         <item name="bottomSheetStyle">@style/Widget.SeNote.BottomSheet</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
 
@@ -67,6 +70,7 @@
     </style>
 
     <style name="EditorActionBarButton">
+        <item name="contentDescription" />
         <item name="android:layout_width">36dp</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:contentDescription">@null</item>
