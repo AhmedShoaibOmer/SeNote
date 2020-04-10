@@ -4,79 +4,34 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme. -->
-    <style name="ThemeOverlay.SeNote" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Main color -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <!-- If isn't status bar color, the status bar color will be primary dark -->
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 
-
-        <!-- Color Secondary - Color used in FAB and checkboxes, switches ... -->
-        <item name="colorSecondary">@color/colorSecondary</item>
-
-        <!-- Color On Primary - Color of text and icons in colored components as Buttons and BottomNavigationView -->
-        <item name="colorOnPrimary">@color/colorOnPrimary</item>
-        <!-- Color On Seconday - Color of text and icons in colored Secondary components as FAB... -->
-        <item name="colorOnSecondary">@color/colorOnSecondary</item>
-
-        <!--Color Surface - Color used in CardView Background, Toolbar ... -->
-        <item name="colorSurface">@color/colorSurface</item>
-        <!--Color On Surface - Color used in Elements inside Surface as Toolbar title ... -->
-        <item name="colorOnSurface">@color/colorOnSurface</item>
-
-        <item name="colorError">@color/redDark</item>
-        <item name="colorOnError">@color/colorOnError</item>
-
-        <item name="android:colorBackground">@color/colorBackground</item>
-        <item name="colorOnBackground">@color/colorOnBackground</item>
-        <item name="android:statusBarColor">@color/colorSurface</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">@bool/lightStatusBarColor
-        </item>
-
-        <item name="materialCardViewStyle">
-            @style/MaterialCardView
-        </item>
-
-        <item name="bottomSheetStyle">@style/Widget.SeNote.BottomSheet</item>
-        <item name="android:windowContentTransitions">true</item>
-    </style>
-
-
-    <style name="ThemeOverlay.SeNote.SplashTheme" parent="ThemeOverlay.SeNote">
-        <item name="android:windowBackground">@drawable/splash_screen_bg</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowTranslucentStatus">true</item>
-    </style>
-
-
-    <style name="MaterialCardView" parent="Widget.MaterialComponents.CardView">
-        <item name="strokeColor">@color/colorDivider</item>
-        <item name="strokeWidth">1dp</item>
-        <item name="cardElevation">0dp</item>
-    </style>
-
-    <style name="ShapeAppearanceOverlay.SeNote.BottomSheet" parent="">
-        <item name="cornerFamilyTopLeft">rounded</item>
-        <item name="cornerFamilyTopRight">rounded</item>
-        <item name="cornerSizeTopLeft">12dp</item>
-        <item name="cornerSizeTopRight">12dp</item>
-    </style>
-
-    <style name="Widget.SeNote.BottomSheet" parent="Widget.MaterialComponents.BottomSheet">
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.SeNote.BottomSheet</item>
-        <item name="shapeAppearance">?attr/shapeAppearanceLargeComponent</item>
-        <item name="backgroundTint">?colorSurface</item>
-    </style>
 
     <style name="EditorActionBarButton">
         <item name="contentDescription" />
         <item name="android:layout_width">36dp</item>
         <item name="android:layout_height">36dp</item>
         <item name="android:contentDescription">@null</item>
-        <item name="tint">@color/colorOnSurface</item>
+        <item name="tint">?colorOnSurface</item>
         <item name="android:background">#00000000</item>
         <item name="android:scaleType">center</item>
     </style>
 
+    <!--Components-->
+
+    <!--Bottom Sheets-->
+    <style name="ThemeOverlay.MyTheme.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/Animation.MyTheme.BottomSheet.Modal</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="bottomSheetStyle">@style/Widget.MyTheme.BottomSheet.Modal</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
+        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">
+            @android:color/transparent
+        </item>
+    </style>
+
+    <style name="Widget.MyTheme.BottomSheet.Modal" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="shapeAppearanceOverlay">?attr/shapeAppearanceLargeComponent</item>
+    </style>
 </resources>

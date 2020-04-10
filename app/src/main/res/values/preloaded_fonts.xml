@@ -4,6 +4,11 @@
 
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/acme</item>
         <item>@font/carter_one</item>
+        <item>@font/raleway</item>
+        <item>@font/raleway_light</item>
+        <item>@font/raleway_medium</item>
+        <item>@font/raleway_semibold</item>
     </array>
 </resources>

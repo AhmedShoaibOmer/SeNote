@@ -3,7 +3,9 @@
   -->
 
 <resources>
-    <dimen name="notebook_item_elevation">5dp</dimen>
+    <dimen name="notebook_item_elevation">0dp</dimen>
     <dimen name="list_item_spacing">16dp</dimen>
     <dimen name="list_item_spacing_half">8dp</dimen>
+    <dimen name="large_shape_radius">20dp</dimen>
+    <dimen name="notebook_grid_reveal_height">200dp</dimen>
 </resources>

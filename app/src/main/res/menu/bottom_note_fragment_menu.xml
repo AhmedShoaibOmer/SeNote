@@ -6,15 +6,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_preferences"
+        android:icon="@drawable/ic_note_fragment_tune_24dp"
+        android:orderInCategory="1"
+        android:title="@string/preferences"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/action_change_paper"
         android:icon="@drawable/ic_notefragment_change_paper_24dp"
-        android:orderInCategory="2"
+        android:orderInCategory="3"
         android:title="@string/change_paper"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_share_note_fragment"
         android:icon="@drawable/ic_action_share"
-        android:orderInCategory="1"
+        android:orderInCategory="2"
         android:title="@string/share"
         app:showAsAction="always" />
     <item
@@ -22,6 +28,7 @@
         android:icon="@drawable/ic_action_add_star_24dp"
         android:orderInCategory="3"
         android:title="@string/add_star"
+        android:visible="false"
         app:showAsAction="always" />
     <item
         android:id="@+id/action_remove_star"

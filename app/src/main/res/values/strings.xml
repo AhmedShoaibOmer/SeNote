@@ -68,10 +68,9 @@
     <string name="search">Search</string>
     <string name="add_notebook">Add Notebook</string>
     <string name="PREFERENCES_FILE_KEY">SeNotePreferences</string>
-    <string name="DEFAULT_NOTEBOOK_ID">Default NoteBook ID</string>
-    <string name="add_voice_note">Add Voice Note</string>
-    <string name="add_picture">Add Picture</string>
-    <string name="add_todo_list">Add ToDo List</string>
+    <string name="add_voice_note">Voice Note</string>
+    <string name="add_picture">Picture</string>
+    <string name="add_todo_list">ToDo List</string>
     <string name="hand_writing">Hand Writing</string>
     <string name="attach_file">Attach File</string>
     <string name="add">Add</string>
@@ -96,6 +95,20 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="lists_preferences">Lists Preferences</string>
-    /
+    <string name="inter_the_name_of_the_notebook">Inter the name of the Notebook</string>
+    <string name="untitled">Untitled</string>
+    <string name="empty_note_message">Notes  cannot be empty</string>
+    <string name="text_size">Text Size (Default: 14)</string>
+    <string name="add_text_note">Text</string>
+
+    <!--Quotations for empty notebooks-->
+    <string name="a">\"From small beginnings come great things. \"</string>
+    <string name="b">\"Whether you succeed or not is irrelevant, there is no such thing.\n Making your unknown known is the important thing.\"\n \n Georgia O\'Keeffe</string>
+    <string name="c">\"It is never too late to be what you might have been. \"\n\n George Eliot</string>
+    <string name="d">\"Somewhere, something incredible is waiting to be known.\" \n\nCarl Sagan</string>
+    <string name="e">\"It\'s so fine and yet so terrible to stand in front of a blank canvas. \"\n\n Paul Cezanne</string>
+    <string name="f">\"Strive not to be a success, but rather to be of value.\" \n\nAlbert Einstein</string>
+    <string name="g">\"Life is the art of drawing without an eraser.\" \n\nJohn W. Gardner</string>
+
 
 </resources>

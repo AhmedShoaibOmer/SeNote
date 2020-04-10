@@ -3,91 +3,61 @@
   -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.aso.senote.ui.fragments.homescreen.HomeScreenViewModel" />
+            type="com.aso.senote.ui.fragments.notebooks.NotebooksViewModel" />
 
         <variable
             name="notebook"
             type="com.aso.senote.data.models.Notebook" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="156dp"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="148dp"
         android:layout_height="207dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:background="@android:color/transparent"
-        android:onClick="@{() -> viewModel.openNotebook(notebook.notebookId)}">
+        android:onClick="@{() -> viewModel.openNotebook(notebook.notebookId)}"
+        app:cardElevation="@dimen/notebook_item_elevation">
 
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            app:cardBackgroundColor="@color/leather"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="@dimen/notebook_item_elevation"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/notebook_cover_iv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:transitionName="notebook_image"
-                app:srcCompat="@drawable/cover_sample"
-                bind:bindTextTitle="@{notebookTitleTv}"
-                bind:loadImageFromUrl="@{notebook.notebookCoverUri}"
-                tools:ignore="ContentDescription" />
-
-        </androidx.cardview.widget.CardView>
-
+        <ImageView
+            android:id="@+id/notebook_cover_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:transitionName="notebook_image"
+            app:bindTextTitle="@{notebookTitleTv}"
+            app:loadImageFromUrl="@{notebook.notebookCoverUri}"
+            app:srcCompat="@drawable/cover_sample"
+            tools:ignore="ContentDescription"
+            tools:visibility="gone" />
 
         <TextView
             android:id="@+id/notebook_title_tv"
-            android:layout_width="0dp"
+            android:layout_width="112dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="28dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            android:elevation="@dimen/notebook_item_elevation"
             android:gravity="center"
             android:lines="2"
             android:text="@{notebook.notebookTitle}"
-            android:transitionName="notebook_text_view"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="My Notebook" />
+            android:transitionName="notebook"
+            tools:text="My Notebook Notebook" />
 
+        <View
+            android:id="@+id/view"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/colorPrimary" />
 
-        <ImageView
-            android:id="@+id/spiral_binding"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginBottom="8dp"
-            android:elevation="@dimen/notebook_item_elevation"
-            android:scaleType="fitXY"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/notebook_title_tv"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_spiral_bind2"
-            tools:ignore="ContentDescription" />
+    </com.google.android.material.card.MaterialCardView>
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) ASO 2020.
-  -->
-
-
-<com.google.android.material.navigation.NavigationView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/addnav"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />

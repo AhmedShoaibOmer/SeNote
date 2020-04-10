@@ -7,6 +7,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.aso.senote.ui.fragments.notebook.NotebookViewModel" />
@@ -21,10 +23,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:onClick="@{() -> viewModel.openNote(note.id)}"
-        bind:cardBackgroundColor="@color/colorSurface"
-        bind:cardElevation="2dp"
-        bind:strokeWidth="0dp">
+        android:onClick="@{() -> viewModel.openNote(note.id)}">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="end|top"
+            android:layout_margin="8dp"
+            android:visibility="@{note.starred? View.VISIBLE : View.GONE}"
+            bind:srcCompat="@drawable/ic_star_black_24dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,11 +44,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:layout_marginEnd="22dp"
                 android:gravity="start"
                 android:maxLines="2"
                 android:text="@{note.noteTitle}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                tools:text="First Note" />
+                tools:text="First Note " />
 
             <TextView
                 android:id="@+id/note_content"

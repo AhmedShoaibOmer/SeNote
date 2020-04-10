@@ -6,16 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_attach"
-        android:icon="@drawable/ic_action_attach_file"
-        android:title="@string/attach_file"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/action_lists_preferences"
-        android:icon="@drawable/ic_note_fragment_tune_black_24dp"
-        android:title="@string/lists_preferences"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/action_menu"
         android:icon="@drawable/ic_more_vert_black_24dp"
         android:title="@string/more"

@@ -7,71 +7,93 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.aso.senote.ui.fragments.notebook.NotebookViewModel" />
 
-        <variable
-            name="notebook"
-            type="com.aso.senote.data.models.Notebook" />
     </data>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="false">
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:text="@{viewModel.notebook.notebookTitle}"
+            android:textAppearance="?textAppearanceHeadline6"
+            android:transitionName="notebook"
+            app:layout_constraintBottom_toTopOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="My Notebook" />
+
+        <ImageButton
+            android:id="@+id/notebook_preferences"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="8dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/add_notebook"
+            android:src="@drawable/ic_note_fragment_tune_black_24dp"
+            app:layout_constraintBottom_toTopOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/notebook_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:background="@android:color/transparent"
             android:clipToPadding="false"
-            android:paddingTop="56dp"
             android:paddingEnd="16dp"
             android:paddingBottom="64dp"
+            android:visibility="@{viewModel.empty? View.GONE : View.VISIBLE}"
             app:items="@{viewModel.notes}"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline"
             app:spanCount="2"
-            tools:listitem="@layout/list_item_note_grid">
+            tools:listitem="@layout/list_item_note_grid"
+            tools:visibility="gone" />
 
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbar"
+        <TextView
+            android:id="@+id/quote_tv"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_alignParentTop="true"
-            android:background="@color/colorSurface"
-            app:elevation="4dp">
+            android:layout_height="0dp"
+            android:fontFamily="@font/raleway_light_italic"
+            android:gravity="center"
+            android:inputType="textMultiLine"
+            android:paddingStart="48dp"
+            android:paddingEnd="48dp"
+            android:textAppearance="@style/TextAppearance.MyTheme.Subtitle1"
+            android:textColor="@color/colorDivider"
+            android:visibility="@{viewModel.empty? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text="fgjfgfhgdhgdhdgdjfjgdjdjdgfgffg" />
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/notebook_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?android:attr/actionBarSize"
-                app:contentInsetEnd="0dp"
-                app:contentInsetLeft="0dp"
-                app:contentInsetRight="0dp"
-                app:contentInsetStart="0dp"
-                app:contentInsetStartWithNavigation="0dp"
-                app:layout_collapseMode="pin"
-                app:menu="@menu/top_notebook_fragment_menu"
-                app:navigationIcon="@drawable/ic_note_fragment_back">
-
-                <TextView
-                    android:id="@+id/notebook_text_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center|center_horizontal"
-                    android:text="@{notebook.notebookTitle}"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-                    android:transitionName="notebook_text_view"
-                    tools:text="My Notebook" />
-
-            </com.google.android.material.appbar.MaterialToolbar>
-        </com.google.android.material.appbar.AppBarLayout>
-
-
-    </RelativeLayout>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_begin="56dp"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

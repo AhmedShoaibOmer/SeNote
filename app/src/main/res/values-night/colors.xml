@@ -5,21 +5,21 @@
 
 <resources>
     <!-- Material SeNote -->
-    <color name="colorPrimary">#4EBAFF</color>
-    <color name="colorPrimaryDark">#009CFF</color>
-    <color name="colorSecondary">#7986CB</color>
-    <color name="colorOnPrimary">@color/colorTextHighEmphasis</color>
-    <color name="colorOnSecondary">#FFFFFF</color>
+    <!--Color palette-->
+
+    <color name="colorPrimary">#c74a9d</color> <!--Color primary (dark)-->
+    <color name="colorOnPrimary">#000000</color>
+    <color name="colorPrimaryVariant">#5d2d4d</color> <!--Color primary variant (dark)-->
+
+    <color name="colorError">#F57C00</color><!--Color error (dark)-->
+    <color name="colorOnError">#000000</color>
+
     <color name="colorSurface">#121212</color>
-    <color name="colorSurfaceDark">#5F5F5F</color>
-    <color name="colorOnSurface">#FFFFFF</color>
-    <color name="colorTextHighEmphasis">#DE000000</color>
-    <color name="colorTextMediumEmphasis">#99000000</color>
-    <color name="colorTextDisabled">#61000000</color>
-    <color name="colorError">#CF6679</color>
-    <color name="colorOnError">@color/colorTextHighEmphasis</color>
-    <color name="colorBackground">#121212</color>
-    <color name="colorOnBackground">#FFFFFF</color>
-    <color name="colorStatusBar">#121212</color>
-    <color name="colorDivider">#1FFFFFFF</color>
+    <color name="colorOnSurface">#ffffff</color>
+
+    <color name="colorBackground">#121212</color> <!--Color surface (dark)-->
+    <color name="colorOnBackground">#ffffff</color>
+    <color name="colorDivider">#E0F7FA</color>
+
+
 </resources>

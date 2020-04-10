@@ -3,14 +3,15 @@
   -->
 
 <resources>
-    <!-- Reply Preference -->
-    <string-array name="reply_entries">
-        <item>Reply</item>
-        <item>Reply to all</item>
+    <!-- Quotes for the empty notebooks -->
+    <string-array name="quotes">
+        <item>@string/a</item>
+        <item>@string/b</item>
+        <item>@string/c</item>
+        <item>@string/d</item>
+        <item>@string/e</item>
+        <item>@string/f</item>
+        <item>@string/g</item>
     </string-array>
 
-    <string-array name="reply_values">
-        <item>reply</item>
-        <item>reply_all</item>
-    </string-array>
 </resources>

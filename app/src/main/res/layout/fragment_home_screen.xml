@@ -7,61 +7,156 @@
 
     <data>
 
+        <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.aso.senote.ui.fragments.homescreen.HomeScreenViewModel" />
+            type="com.aso.senote.ui.fragments.homeScreen.HomeScreenViewModel" />
     </data>
 
-    <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/home_screen_rv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingStart="0dp"
-            android:paddingTop="56dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="64dp"
-            app:items="@{viewModel.notebooks}"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-            app:spanCount="2"
-            tools:itemCount="10"
-            tools:listitem="@layout/list_item_notebook">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentTop="true"
-        android:background="@android:color/transparent"
-        app:elevation="8dp">
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.homeScreen.HomeScreenFragment">
+
+        <include
+            android:id="@+id/navigation_backdrop"
+            layout="@layout/inc_senote_backdrop"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/app_bar_layout" />
 
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/notebooks_toolbar"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/appbar_floating_round_background"
+            android:layout_height="wrap_content"
+            app:elevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:paddingStart="12dp"
+                android:paddingLeft="12dp"
+                android:paddingEnd="12dp"
+                android:paddingRight="12dp"
+                app:contentInsetEnd="0dp"
+                app:contentInsetEndWithActions="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetRight="0dp"
+                app:contentInsetStart="0dp"
+                app:contentInsetStartWithNavigation="0dp"
+                app:title="@string/app_name" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/nav_host_frame"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/app_bar_layout"
+            app:shapeAppearance="?shapeAppearanceLargeComponent"
+            tools:visibility="visible">
+
+            <fragment
+                android:id="@+id/sub_fragment_container"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:navGraph="@navigation/sub_nav_graph" />
+
+            <View
+                android:id="@+id/backdrop_overlay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00000000"
+                android:clickable="true"
+                android:elevation="10dp"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+        </com.google.android.material.card.MaterialCardView>
+        <!--        app:layout_anchor="@id/bottom_app_bar"-->
+
+        <View
+            android:id="@+id/add_overlay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#00000000"
+            android:elevation="10dp"
+            android:onClick="@{() -> viewModel.showInsertMenu(false)}"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/add_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/colorSecondary"
+            app:cardElevation="14dp"
+            app:cardMaxElevation="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="visible">
+
+            <include
+                android:id="@+id/add_backdrop"
+                layout="@layout/inc_senote_add_backdrop"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:onClick="@{() -> viewModel.showInsertMenu(true)}"
+            android:src="@drawable/ic_note_add_black_24dp"
+            app:elevation="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!--<com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_app_bar"
+            style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:backgroundTint="@color/colorPrimary"
             app:contentInsetEnd="0dp"
             app:contentInsetLeft="0dp"
             app:contentInsetRight="0dp"
             app:contentInsetStart="0dp"
-            app:contentInsetStartWithNavigation="0dp"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:menu="@menu/top_home_screen_fragment_menu"
-            app:navigationIcon="@drawable/ic_home_screen_menu_black_24dp" />
+            app:fabAlignmentMode="center"
+            app:fabAnimationMode="slide"
+            app:hideOnScroll="true"
+            app:layout_scrollFlags="scroll|enterAlways">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <include layout="@layout/activity_main_bottom_navigation"
+                android:id="@+id/bottom_navigation"/>
+        </com.google.android.material.bottomappbar.BottomAppBar>-->
 
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

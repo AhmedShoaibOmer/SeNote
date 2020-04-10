@@ -25,41 +25,49 @@ class LocalNotesDataSource(
 
     private val mNotebookDao: NotebookDAO
     private val mNoteDao: NoteDAO
-    private val mAllNotes: LiveData<List<Note>>
-    private val mAllNotebooks: LiveData<List<Notebook>>
+    private val mAllNotes: LiveData<List<Note>?>
+    private val mAllNotebooks: LiveData<List<Notebook>?>
 
     init {
         val db = (application as BaseApplication).dataBase
-        mNoteDao = db.noteDAO()
+        mNoteDao = db!!.noteDAO()
         mNotebookDao = db.notebookDAO()
         mAllNotebooks = mNotebookDao.allNotebooksByDateCreated
         mAllNotes = mNoteDao.allNotesByDateCreated
     }
 
-    override fun observeNotebooks(): LiveData<List<Notebook>> {
+    override fun observeNotebooks(): LiveData<List<Notebook>?> {
         return mAllNotebooks
     }
 
-    override fun observeNotes(): LiveData<List<Note>> {
+    override fun observeNotes(): LiveData<List<Note>?> {
         return mAllNotes
     }
 
-    override fun observeNotesForNotebook(notebookId: Long): LiveData<List<Note>> {
+    override fun observeNotesForNotebook(notebookId: Long): LiveData<List<Note>?> {
 
         return mNoteDao.getNotesForNotebook(notebookId)
     }
 
-    override fun observeNoteById(noteId: Long): LiveData<Note> {
+    override fun observeNoteById(noteId: Long): LiveData<Note?> {
         return mNoteDao.getNoteById(noteId)
     }
 
-    override fun saveNote(note: Note) {
-        mAppExecutors.localIO().execute { mNoteDao.upsert(note) }
+    override suspend fun saveNote(note: Note): Long {
+        return mNoteDao.upsert(note)
     }
 
-    override fun saveNotebook(notebook: Notebook) {
+    override suspend fun saveNotebook(notebook: Notebook) {
         mAppExecutors.localIO().execute { mNotebookDao.upsert(notebook) }
 
+    }
+
+    override suspend fun getNote(noteId: Long): Note? {
+        return mNoteDao.getNote(noteId)
+    }
+
+    override fun observeNotebookById(notebookId: Long): LiveData<Notebook> {
+        return mNotebookDao.observeNotebookById(notebookId)
     }
 
     override fun deleteNotes(vararg notes: Note) {

@@ -19,10 +19,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        javaCompileOptions{
+        javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [
-                        "room.incremental":"true"
+                        "room.incremental": "true"
                 ]
             }
         }
@@ -53,9 +53,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'com.google.android.material:material:1.1.0'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
+    implementation 'com.google.android.material:material:1.2.0-alpha05'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha02'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
@@ -65,6 +65,7 @@ dependencies {
     //Testing---------------------------------------------------------------------------------------
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.preference:preference:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     kaptTest 'junit:junit:4.12'
     kaptAndroidTest 'androidx.test.ext:junit:1.1.1'
     kaptAndroidTest 'androidx.test.espresso:espresso-core:3.2.0'
@@ -103,7 +104,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
     //TextEditor------------------------------------------------------------------------------------
-    //implementation 'com.github.irshulx:laser-native-editor:3.0.4'
     final def markwon_version = '4.2.2'
     implementation "io.noties.markwon:core:$markwon_version"
     implementation "io.noties.markwon:editor:$markwon_version"

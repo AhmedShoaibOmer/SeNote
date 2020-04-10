@@ -4,44 +4,12 @@
 
 package com.aso.senote.editor;
 
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.Menu;
-import android.view.View;
+//import com.aso.senote.databinding.FragmentNoteBinding;
 
-import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.widget.NestedScrollView;
-
-import com.aso.senote.R;
-import com.aso.senote.data.models.Note;
-import com.aso.senote.databinding.FragmentNoteBinding;
-import com.aso.senote.databinding.FragmentNoteEditorActionbarBinding;
-import com.aso.senote.databinding.FragmentNotePreferencePanelBinding;
-import com.aso.senote.util.KeyboardUtils;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
-import com.bumptech.glide.request.target.Target;
-import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.textfield.TextInputEditText;
-
-import java.util.concurrent.Executors;
-
-import io.noties.markwon.AbstractMarkwonPlugin;
-import io.noties.markwon.Markwon;
-import io.noties.markwon.core.MarkwonTheme;
-import io.noties.markwon.editor.MarkwonEditor;
-import io.noties.markwon.editor.MarkwonEditorTextWatcher;
-import io.noties.markwon.ext.strikethrough.StrikethroughPlugin;
-import io.noties.markwon.ext.tables.TablePlugin;
-import io.noties.markwon.image.AsyncDrawable;
-import io.noties.markwon.image.glide.GlideImagesPlugin;
-
-public class SEditor implements View.OnClickListener {
+public class SEditor /*implements View.OnClickListener */ {
     private static final String TAG = "SEditor";
 
-    private final FragmentNoteEditorActionbarBinding editorActionbarBinding;
+   /* private final FragmentNoteEditorActionbarBinding editorActionbarBinding;
     private final FragmentNotePreferencePanelBinding preferencesPanelBinding;
     private final Context mContext;
     private final View mView;
@@ -59,11 +27,11 @@ public class SEditor implements View.OnClickListener {
     private boolean isInEditMode = false;
     private boolean isNewNote = false;
     private Menu menu;
-    private NoteListener noteListener;
+    private NoteListener noteListener;*/
 //    private AddEditNoteFragment.BottomToolbarListener bottomToolbarListener ;
 
 
-    public SEditor(Context mContext, FragmentNoteBinding binding, NoteListener listener) {
+  /*  public SEditor(Context mContext, FragmentNoteBinding binding, NoteListener listener) {
         this.mContext = mContext;
         this.mView = binding.getRoot();
         this.textInputET = binding.contentInput;
@@ -72,7 +40,7 @@ public class SEditor implements View.OnClickListener {
         this.noteListener = listener;
         this.editorActionbarBinding = binding.editorActionbar;
         this.preferencesPanelBinding = binding.editorPreferencesPanel;
-    }
+    }*/
 
 /*    public void initializeEditor() {
         initToolbar();
@@ -150,77 +118,6 @@ public class SEditor implements View.OnClickListener {
                 return true;
             } else return isInEditMode;
     }
-
-    private void initPreferencePanel() {
-        SeekBar linaSP, marginLeft, marginRight;
-        linaSP = preferencesPanelBinding.lineSpacingSetter;
-        marginLeft = preferencesPanelBinding.leftMarginSpacingSetter;
-        marginRight = preferencesPanelBinding.rightMarginSpacingSetter;
-
-        linaSP.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                textInputET.setLineSpacing((float) progress, 1.0f);
-                noteTitleET.setLineSpacing((float) progress, 1.0f);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        marginRight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                float scale = mContext.getResources().getDisplayMetrics().density;
-                int dpAsPxls = (int) (progress * scale + 0.5F);
-                textInputET.setPadding(textInputET.getPaddingLeft(),
-                        textInputET.getPaddingTop(), dpAsPxls,
-                        textInputET.getPaddingBottom());
-
-                noteTitleET.setPadding(
-                        noteTitleET.getPaddingLeft(),
-                        noteTitleET.getPaddingTop(), dpAsPxls,
-                        noteTitleET.getPaddingBottom());
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        marginLeft.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                float scale = mContext.getResources().getDisplayMetrics().density;
-                int dpAsPxls = (int) (progress * scale + 0.5F);
-                textInputET.setPadding(dpAsPxls, textInputET.getPaddingTop()
-                        , textInputET.getPaddingRight(), textInputET.getPaddingBottom());
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-
-    }
-
     private void initKeyboardListener() {
         KeyboardUtils.addKeyboardToggleListener(mView, mContext, isVisible -> {
             if (isVisible) {
@@ -234,69 +131,9 @@ public class SEditor implements View.OnClickListener {
 
     }
 
-    private void initToolbar() {
-        actionBarToolBar.inflateMenu(R.menu.top_note_fragment_menu);
-        menu = actionBarToolBar.getMenu();
-        actionBarToolBar.setNavigationOnClickListener(v -> {
-            if (isInEditMode) {
-                if (!selectedNote.noteContent.isEmpty() && selectedNote.noteContent != null) {
-                    startPreviewMode();
-                } else {
-                    if (isKeyboardVisible) {
-                        KeyboardUtils.forceCloseKeyboard(mView);
-                    }
-                    Navigation.findNavController(mView).navigateUp();
-                }
-            } else {
-                Navigation.findNavController(mView).navigateUp();
-            }
-        });
+   */
 
-
-        actionBarToolBar.setOnMenuItemClickListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.action_edit:
-                    // TODO: 3/7/20 Animate icons toggle
-
-                    startEditMode();
-
-                    return true;
-                case R.id.action_save:
-                    saveNote();
-                    startPreviewMode();
-                    return true;
-                default:
-                    return false;
-            }
-        });
-    }*/
-/*
-    private void saveNote() {
-        if (selectedNote.noteContent.isEmpty() && selectedNote.noteTitle.isEmpty())
-            isNewNote = true;
-
-        selectedNote.noteContent = Objects.requireNonNull(textInputET.getText()).toString();
-        selectedNote.noteTitle = Objects.requireNonNull(noteTitleET.getText()).toString();
-
-        if (!selectedNote.noteTitle.isEmpty() && selectedNote.noteTitle != null) {
-
-            if (!selectedNote.noteContent.isEmpty() && selectedNote.noteContent != null) {
-                isNewNote = noteListener.saveNote(selectedNote, isNewNote);
-            } else {
-                selectedNote.noteContent = noteTitleET.getText().toString();
-                isNewNote = noteListener.saveNote(selectedNote, isNewNote);
-            }
-        } else {
-            if (!selectedNote.noteContent.isEmpty() && selectedNote.noteContent != null) {
-                isNewNote = noteListener.saveNote(selectedNote, isNewNote);
-            } else {
-                if (isKeyboardVisible) KeyboardUtils.forceCloseKeyboard(mView);
-                Navigation.findNavController(mView).navigateUp();
-            }
-        }
-    }*/
-
-    private void initEditorActionsBottomSheet() {
+    /*private void initEditorActionsBottomSheet() {
         ConstraintLayout actionBarBottomSheet = editorActionbarBinding.editorActionbar;
         mEditorActionbarBottomSheetBehavior = BottomSheetBehavior.from(actionBarBottomSheet);
         mEditorActionbarBottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
@@ -422,11 +259,11 @@ public class SEditor implements View.OnClickListener {
 
     }
 
-    /**
+    *//**
      * Called when a view has been clicked.
      *
      * @param v The view that was clicked.
-     */
+     *//*
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -473,7 +310,7 @@ public class SEditor implements View.OnClickListener {
                 editorAction.strikeThrough();
                 break;
             case R.id.image:
-                /*/ insert image
+                *//*//* insert image
                 AlertDialog.Builder inputDialog = new AlertDialog.Builder(mContext);
                 inputDialog.setTitle(R.string.dialog_title_insert_image);
                 LayoutInflater inflater = getLayoutInflater();
@@ -498,7 +335,7 @@ public class SEditor implements View.OnClickListener {
                                         imageUri.getText().toString());
                             }
                         });
-                inputDialog.show();*/
+                inputDialog.show();*//*
                 break;
             case R.id.indent:
                 editorAction.indent();
@@ -540,9 +377,9 @@ public class SEditor implements View.OnClickListener {
         isPreferencesVisible = !isPreferencesVisible;
     }
 
-    /*private void toggleShowBottomToolbar() {
+    *//*private void toggleShowBottomToolbar() {
         bottomToolbarListener.toggleVisibility(isInEditMode);
-    }*/
+    }*//*
 
     private void toggleTopToolbarNavigationIcon() {
         if (isInEditMode) {
@@ -553,7 +390,7 @@ public class SEditor implements View.OnClickListener {
         }
     }
 
-   /* public void setNote(Note note) {
+   *//* public void setNote(Note note) {
         this.selectedNote = note;
         bottomToolbarListener.setStarred(selectedNote.isStarred());
     }
@@ -561,7 +398,7 @@ public class SEditor implements View.OnClickListener {
     public void setBottomToolbarListener(AddEditNoteFragment.BottomToolbarListener bottomToolbarListener) {
         this.bottomToolbarListener = bottomToolbarListener;
 
-    }*/
+    }*//*
 
     public Note getNote() {
         return this.selectedNote;
@@ -576,5 +413,5 @@ public class SEditor implements View.OnClickListener {
         void togglePreferencesMenu();
 
         void setStarred(boolean isStarred);
-    }
+    }*/
 }

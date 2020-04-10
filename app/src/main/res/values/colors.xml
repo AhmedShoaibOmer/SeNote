@@ -21,24 +21,24 @@
     <color name="leather">#624a2e</color>
 
     <!-- Material SeNote -->
-    <color name="colorPrimary">#1164f2</color>
-    <color name="colorPrimaryDark">#2340D3</color>
-    <color name="colorSecondary">#3949AB</color>
-    <color name="colorOnPrimary">#FFFFFF</color>
-    <color name="colorOnSecondary">#FFFFFF</color>
-    <color name="colorSurface">#FFFFFF</color>
-    <color name="colorSurfaceDark">#F5F5F5</color>
-    <color name="colorOnSurface">@color/colorTextHighEmphasis</color>
-    <color name="colorTextHighEmphasis">#DE000000</color>
-    <color name="colorTextMediumEmphasis">#99000000</color>
-    <color name="colorTextDisabled">#61000000</color>
-    <color name="colorError">#B00020</color>
-    <color name="colorOnError">#FFFFFF</color>
-    <color name="colorBackground">@color/design_default_color_background</color>
-    <color name="colorOnBackground">@color/colorTextHighEmphasis</color>
-    <color name="colorStatusBar">#F5F5F5</color>
-    <color name="colorDivider">#1F000000</color>
+    <!--Color palette-->
 
-    <color name="blackAlpha45">#73000000</color>
-    <color name="blackAlpha60">#99000000</color>
+    <color name="colorPrimary">#5d1049</color><!--Color primary (light)-->
+    <color name="colorOnPrimary">#ffffff</color>
+    <color name="colorPrimaryVariant">#310021</color> <!--Color primary variant (light)-->
+
+    <color name="colorSecondary">#e30425</color> <!--Color secondary-->
+    <color name="colorOnSecondary">#ffffff</color>
+    <color name="colorSecondaryVariant">#a80000</color> <!--Color secondary variant-->
+
+    <color name="colorError">#E65100</color>
+    <color name="colorOnError">#000000</color>
+
+    <color name="colorSurface">#ffffff</color>
+    <color name="colorOnSurface">#000000</color>
+
+    <color name="colorBackground">#ffffff</color>
+    <color name="colorOnBackground">#000000</color>
+    <color name="colorDivider">#121212</color>
+
 </resources>
