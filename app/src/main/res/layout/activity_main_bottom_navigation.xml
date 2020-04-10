@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) ASO 2020.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottom_navigation"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@android:color/transparent"
+    android:orientation="horizontal"
+    android:weightSum="5">
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#00000000"
+        android:contentDescription="@string/add_voice_note"
+        android:onClick="addVoiceNote"
+        android:scaleType="center"
+        android:src="@drawable/ic_action_add_voice_note" />
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#00000000"
+        android:contentDescription="@string/add_picture"
+        android:onClick="addPhotoNote"
+        android:scaleType="center"
+        android:src="@drawable/ic_action_add_photo" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#00000000"
+        android:contentDescription="@string/add_todo_list"
+        android:onClick="addTodoList"
+        android:scaleType="center"
+        android:src="@drawable/ic_action_add_todo_list" />
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#00000000"
+        android:contentDescription="@string/hand_writing"
+        android:onClick="handWriting"
+        android:scaleType="center"
+        android:src="@drawable/ic_action_draw_note" />
+</LinearLayout>

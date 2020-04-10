@@ -6,7 +6,6 @@
 
     <Preference
         app:fragment="com.aso.senote.ui.activities.SettingsActivity$MessagesFragment"
-        app:icon="@drawable/messages"
         app:key="messages_header"
         app:title="@string/messages_header" />
 

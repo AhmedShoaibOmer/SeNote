@@ -10,11 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.aso.senote.EventObserver
 import com.aso.senote.R
+import com.aso.senote.data.models.Notebook
 import com.aso.senote.databinding.FragmentHomeScreenBinding
 import com.aso.senote.util.getViewModelFactory
+import kotlinx.android.synthetic.main.list_item_notebook.*
 
 
 /**
@@ -49,15 +52,18 @@ class HomeScreenFragment : Fragment() {
     }
 
     private fun setupNavigation() {
-
         mViewModel.openNotebookEvent.observe(viewLifecycleOwner, EventObserver {
             openNotebook(it)
         })
     }
 
     private fun openNotebook(notebookId: Long) {
+        val extras: FragmentNavigator.Extras = FragmentNavigator.Extras.Builder().addSharedElement(
+                notebook_title_tv,
+                "notebook_text_view"
+        ).build()
         val action = HomeScreenFragmentDirections.actionHomeScreenFragmentToNotebookFragment(notebookId)
-        findNavController(this).navigate(action)
+        findNavController(this).navigate(action, extras)
     }
 
     private fun setupListAdapter() {
@@ -73,12 +79,17 @@ class HomeScreenFragment : Fragment() {
     private fun setupTopToolbar() {
         binding.notebooksToolbar.apply {
             setNavigationOnClickListener {
-                //TODO fgfgfgfgfgfgfgg
+                //TODO Open The NavDrawer.
             }
             setOnMenuItemClickListener {
                 when (it.itemId) {
-                    R.id.action_add_notebook ->
+                    R.id.action_add_notebook -> {
+                        mViewModel.createNotebook(
+                                Notebook(getString(R.string.untitled),
+                                        null)
+                        )
                         true
+                    }
                     R.id.action_search ->
                         true
                     else -> false

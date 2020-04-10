@@ -2,6 +2,13 @@
   ~ Copyright (c) ASO 2020.
   -->
 <layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.aso.senote.ui.fragments.addEditNote.AddEditNoteViewModel" />
+    </data>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/note_fragment_preferences"
@@ -38,7 +45,7 @@
             android:max="32"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
-            android:progress="6" />
+            android:progress="@={viewModel.lineSpacing}" />
 
 
         <TextView
@@ -58,7 +65,7 @@
             android:max="36"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
-            android:progress="14" />
+            android:progress="@={viewModel.leftMargin}" />
 
         <TextView
             android:id="@+id/textView3"
@@ -77,7 +84,26 @@
             android:max="36"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
-            android:progress="12" />
+            android:progress="@={viewModel.rightMargin}" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="@string/text_size"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        <SeekBar
+            android:id="@+id/text_size_setter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="false"
+            android:max="42"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:progress="@={viewModel.textSize}" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

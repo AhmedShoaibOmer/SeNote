@@ -96,6 +96,10 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="lists_preferences">Lists Preferences</string>
+    <string name="inter_the_name_of_the_notebook">Inter the name of the Notebook</string>
+    <string name="untitled">Untitled</string>
+    <string name="empty_note_message">Notes  cannot be empty</string>
+    <string name="text_size">Text Size (Default: 14)</string>
     /
 
 </resources>

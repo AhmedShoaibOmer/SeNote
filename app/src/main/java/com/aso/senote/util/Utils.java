@@ -3,11 +3,11 @@
  */
 
 package com.aso.senote.util;
-// Created by ahmedsomer on 3/29/20.
-//
-///***SeNote
-//
-//
+/* Created by ahmedsomer on 3/29/20.
+ *
+ ***SeNote
+ *
+ */
 
 import android.graphics.Bitmap;
 import android.widget.TextView;

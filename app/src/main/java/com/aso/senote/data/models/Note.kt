@@ -34,7 +34,6 @@ class Note {
         this.noteTitle = noteTitle
         this.noteContent = noteContent
         lastModified = Calendar.getInstance()
-        isStarred = false
     }
 
     @Ignore

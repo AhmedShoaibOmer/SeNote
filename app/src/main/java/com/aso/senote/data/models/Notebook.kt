@@ -10,15 +10,27 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 @Entity(tableName = "notebook_table",
-        indices = [Index(value = ["notebookId"])])
-class Notebook(var notebookTitle: String, var notebookCoverUri: String) {
-    @ColumnInfo(name = "date_created")
-    var dateCreated: Calendar
-
+        indices = [Index(value = ["notebookId"])]
+)
+class Notebook
+(
+        var notebookTitle: String?,
+        var notebookCoverUri: String?
+) {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "notebookId")
     var notebookId: Long = 0
     var lastModified: Calendar
+
+    @ColumnInfo(name = "date_created")
+    var dateCreated: Calendar
+
+
+    init {
+        // TODO: 3/14/20 Deal with the Time zone Differing
+        lastModified = Calendar.getInstance()
+        dateCreated = Calendar.getInstance()
+    }
 
     override fun equals(o: Any?): Boolean {
         if (this === o) return true
@@ -32,11 +44,5 @@ class Notebook(var notebookTitle: String, var notebookCoverUri: String) {
 
     override fun hashCode(): Int {
         return Objects.hash(dateCreated, notebookId, notebookTitle, notebookCoverUri, lastModified)
-    }
-
-    init {
-        lastModified = Calendar.getInstance()
-        // TODO: 3/14/20 Deal with the Time zone Differing
-        dateCreated = Calendar.getInstance()
     }
 }

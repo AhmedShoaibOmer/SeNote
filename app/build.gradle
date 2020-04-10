@@ -103,7 +103,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
     //TextEditor------------------------------------------------------------------------------------
-    //implementation 'com.github.irshulx:laser-native-editor:3.0.4'
     final def markwon_version = '4.2.2'
     implementation "io.noties.markwon:core:$markwon_version"
     implementation "io.noties.markwon:editor:$markwon_version"

@@ -13,7 +13,7 @@
         android:id="@+id/addEditNoteFragment"
         android:name="com.aso.senote.ui.fragments.addEditNote.AddEditNoteFragment"
         android:label="AddEditNoteFragment"
-        tools:layout="@layout/fragment_note">
+        tools:layout="@layout/fragment_add_edit_note">
         <action
             android:id="@+id/action_noteFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />
@@ -27,7 +27,7 @@
             app:argType="long" />
         <argument
             android:name="addOrPreview"
-            app:argType="com.aso.senote.ui.activities.MainActivity.Action" />
+            app:argType="com.aso.senote.ui.activities.MainActivity$Action" />
 
     </fragment>
     <fragment
